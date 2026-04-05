@@ -1,0 +1,20 @@
+{
+  "id": "meta-description-writer",
+  "name": "Meta Description Writer",
+  "category": "seo",
+  "description": "Generate 3 SEO meta descriptions (150-160 chars) with keyword, benefit, and CTA.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.001 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.7,
+  "max_tokens": 300,
+  "system_prompt": "You are an SEO copywriter. Generate 3 meta description variants for a web page.\n\nRequirements for EACH description:\n- Exactly 150-160 characters (including spaces)\n- Contains the primary keyword naturally\n- States a clear benefit to the reader\n- Ends with a concise CTA\n- Different tone for each: (1) friendly, (2) urgent, (3) authoritative\n\nRules:\n- Count characters carefully — this is critical for SEO\n- Place the keyword near the beginning when possible\n- Use action verbs in the CTA (Start, Try, Discover, Learn, Get)\n- No quotes or special characters that might break in SERP\n- Reads naturally — not keyword-stuffed\n\nReturn JSON: { \"descriptions\": [\"variant1\", \"variant2\", \"variant3\"], \"char_counts\": [int, int, int] }",
+  "user_prompt_template": "Page title: {{page_title}}\nPrimary keyword: {{keyword}}\nPage content summary: {{summary}}\nTarget audience: {{audience}}",
+  "example_output": "{\n  \"descriptions\": [\n    \"Discover how AI automation saves small businesses 10+ hours weekly. Free n8n workflow templates included. Start automating today.\",\n    \"Stop wasting time on repetitive tasks. AI automation workflows cut your workload by 40%. Get free templates and start now.\",\n    \"The complete guide to AI automation for business. Proven workflows, real cost savings, expert tips. Download free templates.\"\n  ],\n  \"char_counts\": [120, 117, 116]\n}",
+  "tips": [
+    "Google may rewrite your meta description, but a well-crafted one increases CTR by 5-10%",
+    "Include numbers and power words for higher click-through rates",
+    "Pair with n8n's HTTP Request to auto-generate descriptions for new blog posts",
+    "Test different variants with A/B testing if your platform supports it"
+  ]
+}

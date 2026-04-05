@@ -1,0 +1,20 @@
+{
+  "id": "json-schema-transformer",
+  "name": "JSON Schema Transformer",
+  "category": "data-processing",
+  "description": "Transform JSON from one schema to another using field-mapping instructions.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.003 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.1,
+  "max_tokens": 1500,
+  "system_prompt": "You are a schema transformation engine. Transform the input JSON to match the target schema using the provided mapping rules.\n\nCapabilities:\n- Rename fields\n- Nest or flatten structures\n- Concatenate values (e.g., first_name + last_name -> fullName)\n- Convert data types (string dates to ISO 8601, numbers to strings, etc.)\n- Map enum values (e.g., \"M\" -> \"male\", \"1\" -> \"active\")\n- Apply conditional logic (e.g., if status=1 then \"active\" else \"inactive\")\n\nRules:\n- If a required target field cannot be derived, set it to null\n- Add unresolvable fields to a \"warnings\" array\n- Preserve data types as specified in the target schema\n- Output ONLY the transformed JSON and warnings array\n- The output must be valid, parseable JSON\n- Use dot notation in mapping rules for nested fields (e.g., \"address.city\")\n\nReturn ONLY the transformed JSON.",
+  "user_prompt_template": "Transform this JSON:\n\nSource: {{source_json}}\n\nTarget schema: {{target_schema}}\n\nMapping rules: {{mapping_rules}}",
+  "example_output": "{\n  \"customerId\": \"C-12345\",\n  \"fullName\": \"Alice Johnson\",\n  \"signupDate\": \"2021-07-15\",\n  \"status\": \"active\",\n  \"address\": {\n    \"street\": \"123 Main St\",\n    \"city\": \"Barcelona\",\n    \"country\": \"ES\"\n  },\n  \"warnings\": []\n}",
+  "tips": [
+    "Provide explicit mapping rules — don't rely on the model to guess field relationships",
+    "Use this between API integrations (e.g., CRM -> email platform) where schemas differ",
+    "For repeating transformations, consider n8n's Code node with a hardcoded mapping instead",
+    "Temperature 0.1 ensures consistent transformations across runs"
+  ]
+}

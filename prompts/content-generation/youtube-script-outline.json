@@ -1,0 +1,20 @@
+{
+  "id": "youtube-script-outline",
+  "name": "YouTube Script Outline",
+  "category": "content-generation",
+  "description": "Create a structured outline for an 8-12 minute YouTube video from a topic.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.003 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.7,
+  "max_tokens": 1000,
+  "system_prompt": "You are a video content strategist. Given a topic, produce a detailed outline for an 8-12 minute YouTube video.\n\nStructure:\n1. **Title** (max 60 characters, SEO-friendly)\n2. **Hook** (first 30 seconds — must grab attention immediately)\n3. **Intro** (brief context, what viewer will learn, why it matters)\n4. **Section 1-3** (main content, each with 2-4 bullet sub-points and suggested visual cues)\n5. **Conclusion** (recap key points in 2-3 sentences)\n6. **CTA** (subscribe, like, comment prompt — be specific about what to comment)\n7. **B-roll suggestions** (3-5 visual ideas to enhance production)\n\nRules:\n- Use markdown headings (##) for sections\n- Outline format only — bullet points, not full sentences\n- Include timestamps estimates (e.g., \"0:00-0:30 Hook\")\n- Suggest pattern interrupts every 2-3 minutes to maintain retention\n- If the topic is vague, add a clarification placeholder\n\nReturn ONLY the outline.",
+  "user_prompt_template": "Create a YouTube video outline for:\n\nTopic: {{topic}}\nTarget audience: {{audience}}\nTone: {{tone}}",
+  "example_output": "## Title\nHow to Automate Your Business in 2024 (No Code)\n\n## Hook (0:00-0:30)\n- Open with: \"What if I told you I run a 6-figure side project that takes me 2 hours a week?\"\n- Quick montage of automation dashboards\n\n## Intro (0:30-1:30)\n- Brief context: most small businesses waste 40% of time on repetitive tasks\n- Promise: by end of video, 3 automations you can set up today\n- Credibility: \"I've built over 50 automations for clients\"\n\n## Section 1: Email Automation (1:30-4:00)\n- Problem: manually sorting and replying to emails\n- Solution: n8n + OpenAI classifier\n- Demo: show the workflow\n- Result: saves 5 hours/week\n- [Pattern interrupt: \"Quick question — drop a comment...\"]\n\n## Section 2: Social Media (4:00-7:00)\n- Problem: posting across 4 platforms manually\n- Solution: content repurposing workflow\n- Demo: 1 blog post → 4 platform posts\n- Result: consistent posting with zero daily effort\n\n## Section 3: Lead Follow-up (7:00-9:30)\n- Problem: leads go cold because follow-up is slow\n- Solution: webhook → AI personalized email → CRM update\n- Demo: live trigger\n- Result: 3x response rate\n\n## Conclusion (9:30-10:00)\n- Recap: email, social, leads — the 3 automations\n- \"Start with one, master it, then add the next\"\n\n## CTA (10:00-10:30)\n- \"Which automation would save YOU the most time? Comment below\"\n- Like + Subscribe reminder\n- Link to free workflow templates in description\n\n## B-roll Suggestions\n- Screen recordings of n8n workflows running\n- Time-lapse of manual vs automated task\n- Notification sounds/visual when automation triggers\n- Split-screen: manual work vs automated",
+  "tips": [
+    "YouTube retention drops sharply at 30 seconds — your hook is everything",
+    "Pattern interrupts (questions, graphics, scene changes) every 2-3 min keep viewers watching",
+    "Put your best content in the first 3 minutes — that's what YouTube tests for recommendations",
+    "Mention the CTA at least twice (middle and end) for maximum conversion"
+  ]
+}

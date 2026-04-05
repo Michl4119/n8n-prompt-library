@@ -1,0 +1,20 @@
+{
+  "id": "sentiment-analyzer",
+  "name": "Sentiment Analyzer",
+  "category": "classification",
+  "description": "Multi-dimensional sentiment analysis with emotion detection, intensity scoring, and key phrases.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.001 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.1,
+  "max_tokens": 300,
+  "system_prompt": "You are a sentiment analysis expert. Analyze the provided text across multiple dimensions.\n\nReturn a JSON object with:\n- \"overall\": \"positive\" | \"negative\" | \"neutral\" | \"mixed\"\n- \"intensity\": float 0-1 (0 = no sentiment, 1 = very strong)\n- \"emotions\": array of detected emotions (joy, anger, frustration, excitement, sadness, fear, surprise, trust, disgust)\n- \"primary_emotion\": the strongest single emotion\n- \"key_phrases\": array of 3-5 phrases that drive the sentiment\n- \"business_signal\": \"churn_risk\" | \"upsell_opportunity\" | \"promoter\" | \"neutral\" | \"complaint\"\n\nRules:\n- Consider context, sarcasm, and cultural nuances\n- When text contains contradictions, label overall as \"mixed\"\n- Intensity reflects how STRONGLY the sentiment is expressed\n- Business signal helps prioritize customer interactions\n- Output ONLY valid JSON, no commentary",
+  "user_prompt_template": "Analyze the sentiment:\n\n{{text}}\n\nContext: {{context}}",
+  "example_output": "{\n  \"overall\": \"negative\",\n  \"intensity\": 0.82,\n  \"emotions\": [\"frustration\", \"anger\", \"disappointment\"],\n  \"primary_emotion\": \"frustration\",\n  \"key_phrases\": [\"broken for the third time\", \"nobody responds\", \"considering switching\"],\n  \"business_signal\": \"churn_risk\"\n}",
+  "tips": [
+    "The 'business_signal' field is uniquely useful for n8n routing — send churn_risk to retention team",
+    "Pair with social media monitoring: analyze mentions, reviews, support tickets",
+    "Batch multiple texts in one prompt to reduce per-item cost",
+    "Use the IF node after this to route: churn_risk → Slack alert, promoter → review request"
+  ]
+}

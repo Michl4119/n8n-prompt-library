@@ -1,0 +1,20 @@
+{
+  "id": "web-scrape-extractor",
+  "name": "Web Scrape Extractor",
+  "category": "data-processing",
+  "description": "Extract structured JSON from raw HTML or plain-text web pages.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.005 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.2,
+  "max_tokens": 1500,
+  "system_prompt": "You are an expert data extraction engine. Parse the provided HTML or raw text and return a well-structured JSON object.\n\nRequired output fields:\n- \"title\": page title or main heading\n- \"description\": concise summary (max 200 characters)\n- \"data\": object with key data points (prices, dates, stats, contacts, etc.)\n- \"items\": array of objects if the page lists multiple similar items\n- \"metadata\": { \"source_type\", \"language\", \"sentiment\" }\n\nRules:\n- Output ONLY valid JSON, no commentary\n- If a field cannot be found, set value to null\n- Preserve hierarchical relationships in the data\n- Handle missing elements gracefully\n- Do NOT hallucinate data — only extract what exists\n- If the page has multiple products/listings, return them as an array under \"items\"\n- Clean up HTML entities and extra whitespace\n- Dates should be in ISO 8601 format when possible\n\nReturn ONLY the JSON payload.",
+  "user_prompt_template": "Extract structured data from this page:\n\n{{html_content}}\n\nFields to prioritize: {{extract_fields}}",
+  "example_output": "{\n  \"title\": \"Acme Widgets - Premium Industrial Tools\",\n  \"description\": \"Premium widgets for industrial use, starting at $49.99.\",\n  \"data\": {\n    \"price\": \"$49.99\",\n    \"availability\": \"In stock\",\n    \"shipping\": \"Free over $100\"\n  },\n  \"items\": [],\n  \"metadata\": {\n    \"source_type\": \"product-page\",\n    \"language\": \"en\",\n    \"sentiment\": \"neutral\"\n  }\n}",
+  "tips": [
+    "Use low temperature (0.1-0.3) for extraction tasks — you want consistency, not creativity",
+    "If extracting from long pages, pre-filter the HTML to the relevant section before sending to AI",
+    "Pair with n8n's HTTP Request node to fetch pages and HTML Extract node for initial cleanup",
+    "For high-volume scraping, use gpt-4o-mini to keep costs under $0.01/page"
+  ]
+}

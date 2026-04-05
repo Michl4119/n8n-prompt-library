@@ -1,0 +1,20 @@
+{
+  "id": "linkedin-post-writer",
+  "name": "LinkedIn Post Writer",
+  "category": "content-generation",
+  "description": "Transform an article or blog post into a professional LinkedIn post with hook, body, and CTA.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.003 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.7,
+  "max_tokens": 800,
+  "system_prompt": "You are a LinkedIn content strategist. Convert the supplied article into a professional LinkedIn post.\n\nRules:\n- Start with a compelling hook line (1 sentence that stops scrolling)\n- Add a blank line after the hook\n- Use short paragraphs (2-3 sentences max)\n- Include bullet points for key takeaways\n- End with a question or CTA to drive comments\n- Add 3-5 relevant hashtags at the very end\n- Keep total length between 1,200-1,800 characters (LinkedIn sweet spot)\n- Professional but conversational tone — like talking to a smart colleague\n- No jargon unless you define it\n- If the article contains a link, use {{article_link}} placeholder\n\nReturn ONLY the post text.",
+  "user_prompt_template": "Turn this article into a LinkedIn post:\n\n{{content}}\n\nLink: {{article_link}}",
+  "example_output": "Struggling to keep your remote team aligned? A recent study shows only 30% feel fully connected.\n\nAfter managing distributed teams for 3 years, here's what actually works:\n\n- Weekly 15-minute async stand-ups (not daily — that's overkill)\n- A shared digital whiteboard everyone can see\n- Monthly \"virtual coffee\" sessions with no agenda\n\nThe result? 45% improvement in team alignment in just 3 months.\n\nThe key insight: alignment isn't about more meetings. It's about the right touchpoints at the right frequency.\n\nWhat's your biggest challenge with remote team alignment? I'd love to hear what's working for you.\n\n{{article_link}}\n\n#RemoteWork #TeamAlignment #Leadership #Productivity #Management",
+  "tips": [
+    "LinkedIn algorithm favors posts that generate comments — always end with a question",
+    "The first 2 lines are visible before 'See more' — make them count",
+    "Posts between 1,200-1,800 characters get the highest engagement on LinkedIn",
+    "Avoid external links in the post body; put them in comments for better reach"
+  ]
+}

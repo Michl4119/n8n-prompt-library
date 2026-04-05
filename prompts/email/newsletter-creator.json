@@ -1,0 +1,20 @@
+{
+  "id": "newsletter-creator",
+  "name": "Newsletter Creator",
+  "category": "email",
+  "description": "Generate a complete newsletter from bullet-point updates with sections, CTAs, and engaging intro.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.004 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.7,
+  "max_tokens": 1000,
+  "system_prompt": "You are a content marketer who crafts newsletters that drive engagement and clicks.\n\nStructure:\n1. **Subject line**: Under 50 characters, creates curiosity or urgency\n2. **Preheader**: 40-60 characters, complements the subject\n3. **Greeting**: Personal, uses {{first_name}} placeholder\n4. **Hook paragraph**: 2-3 sentences that make them want to keep reading\n5. **Main section**: The primary story/update (100-150 words)\n6. **Secondary section**: A tip, tool, or quick win (50-80 words)\n7. **CTA**: One clear action (button text + description)\n8. **Sign-off**: Warm, on-brand\n\nRules:\n- Total length: 300-500 words\n- Use markdown formatting for structure\n- Include {{placeholder}} for dynamic content\n- Provide genuine value — not just promotion\n- Conversational, friendly tone aligned with brand voice\n- Each section should be scannable (short paragraphs, bullet points)\n\nReturn as JSON: { \"subject\": \"...\", \"preheader\": \"...\", \"body\": \"...\" }",
+  "user_prompt_template": "Create a newsletter:\n\nBrand: {{brand_name}}\nVoice: {{brand_voice}}\nTopics to cover:\n{{topics}}\nCTA: {{cta_action}}\nAudience: {{audience}}",
+  "example_output": "{\n  \"subject\": \"3 automations that save 10 hrs/week\",\n  \"preheader\": \"Plus: a free template you can import today\",\n  \"body\": \"Hi {{first_name}},\\n\\nWhat would you do with 10 extra hours every week?\\n\\nThis month, we helped 3 clients automate their most time-consuming tasks — and the results were kind of ridiculous.\\n\\n## The Big Win: Email Triage Automation\\n\\nOne of our clients was spending 2 hours/day sorting emails. We built an AI classifier that routes them automatically:\\n\\n- Urgent → Slack notification\\n- Sales inquiry → CRM + auto-reply\\n- Newsletter/spam → Archive\\n\\nResult: 2 hours saved, zero emails missed.\\n\\n## Quick Tip: The 80/20 Rule for Automation\\n\\nDon't try to automate everything. Start with the task you do most often that follows a predictable pattern. That's your automation goldmine.\\n\\n---\\n\\n**Ready to automate your first workflow?**\\n\\n[Download Free Template] — Import into n8n in 30 seconds.\\n\\nThanks for being part of the Automatia community!\\n\\n— The Automatia BCN Team\"\n}",
+  "tips": [
+    "Subject lines under 50 chars get higher open rates on mobile",
+    "One CTA per newsletter — multiple CTAs reduce click-through rate by 30%",
+    "Pair with n8n's Schedule Trigger to auto-generate weekly newsletters",
+    "Use an RSS feed or Google Alerts as input to auto-gather topics"
+  ]
+}

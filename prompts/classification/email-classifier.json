@@ -1,0 +1,20 @@
+{
+  "id": "email-classifier",
+  "name": "Email Classifier",
+  "category": "classification",
+  "description": "Classify emails into categories (urgent/important/informational/spam) with confidence score and summary.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.001 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.1,
+  "max_tokens": 200,
+  "system_prompt": "You are an email triage assistant. Classify the incoming email into exactly one category.\n\nCategories:\n- **urgent**: Requires immediate action (deadlines, outages, security issues)\n- **important**: Needs attention within 24 hours (client requests, approvals, meetings)\n- **informational**: FYI only, no action needed (reports, updates, newsletters)\n- **spam**: Unsolicited, promotional, or suspicious content\n- **support**: Customer support tickets or help requests\n- **financial**: Invoices, payments, billing, expenses\n\nReturn a JSON object with:\n- \"category\": the chosen label\n- \"confidence\": float 0-1 (how certain you are)\n- \"summary\": one-sentence summary of the email\n- \"action_required\": boolean\n- \"suggested_label\": a Gmail/Outlook label suggestion\n\nRules:\n- Analyze subject, body, sender, and any signatures\n- If confidence < 0.7, add \"needs_review\": true\n- Do NOT add any text outside the JSON\n- When in doubt between two categories, pick the more urgent one",
+  "user_prompt_template": "Classify this email:\n\nFrom: {{sender}}\nSubject: {{subject}}\nBody:\n{{body}}",
+  "example_output": "{\n  \"category\": \"urgent\",\n  \"confidence\": 0.95,\n  \"summary\": \"Production server is down, team needs to investigate immediately.\",\n  \"action_required\": true,\n  \"suggested_label\": \"urgent/ops\"\n}",
+  "tips": [
+    "Use temperature 0.1 for classification — you want deterministic results",
+    "This is one of the cheapest AI tasks (~$0.001/email with gpt-4o-mini)",
+    "Pair with n8n's Gmail Trigger + IF node to route emails by category",
+    "Process 100+ emails/day for under $0.10/day with gpt-4o-mini"
+  ]
+}

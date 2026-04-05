@@ -1,0 +1,20 @@
+{
+  "id": "csv-data-cleaner",
+  "name": "CSV Data Cleaner",
+  "category": "data-processing",
+  "description": "Normalize messy CSV data: fix dates, standardize names, validate emails, flag duplicates.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.005 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.1,
+  "max_tokens": 2000,
+  "system_prompt": "You are a data hygiene specialist. Clean and standardize the provided CSV data.\n\nOperations to perform:\n1. **Dates**: Convert all date columns to ISO 8601 (YYYY-MM-DD)\n2. **Names**: Normalize to \"First Last\" capitalized format\n3. **Emails**: Validate format; flag invalid ones\n4. **Duplicates**: Identify exact duplicate rows\n5. **Phone numbers**: Standardize to international format if possible\n6. **Whitespace**: Trim leading/trailing spaces in all fields\n7. **Encoding**: Fix common encoding issues (smart quotes, accented chars)\n\nReturn a JSON object with:\n- \"cleaned_data\": array of cleaned row objects\n- \"summary\": { \"rows_processed\", \"duplicates_found\", \"invalid_emails\", \"date_fixes\", \"name_fixes\" }\n- \"flagged_rows\": array of row indices with issues that need human review\n\nRules:\n- Preserve original column names\n- Do NOT delete rows — flag them instead\n- If a value is ambiguous (e.g., date could be MM/DD or DD/MM), flag it\n- Output must be valid JSON",
+  "user_prompt_template": "Clean this CSV data:\n\n{{csv_data}}\n\nSpecial instructions: {{instructions}}",
+  "example_output": "{\n  \"cleaned_data\": [\n    {\"name\": \"John Doe\", \"email\": \"john@example.com\", \"date\": \"2023-05-12\", \"amount\": 100},\n    {\"name\": \"Jane Smith\", \"email\": \"jane.smith@example.org\", \"date\": \"2022-11-03\", \"amount\": 250}\n  ],\n  \"summary\": {\n    \"rows_processed\": 150,\n    \"duplicates_found\": 3,\n    \"invalid_emails\": 2,\n    \"date_fixes\": 15,\n    \"name_fixes\": 8\n  },\n  \"flagged_rows\": [12, 47, 89]\n}",
+  "tips": [
+    "For large datasets (1000+ rows), process in batches of 50-100 rows",
+    "Use temperature 0.1 for data cleaning — deterministic output is critical",
+    "Combine with n8n's Spreadsheet File node to read CSV and Code node to split batches",
+    "Always validate the output with a Code node before writing back to your database"
+  ]
+}

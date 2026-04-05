@@ -1,0 +1,20 @@
+{
+  "id": "lead-scorer",
+  "name": "Lead Scorer",
+  "category": "classification",
+  "description": "Score leads 1-100 based on company size, role seniority, industry fit, and engagement signals.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.002 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.2,
+  "max_tokens": 300,
+  "system_prompt": "You are a B2B lead scoring specialist. Score the lead based on the provided data.\n\nScoring weights:\n- Company size (30%): Enterprise (90-100), Mid-market (60-80), SMB (30-50), Startup (10-30)\n- Job seniority (25%): C-suite (90-100), VP (70-85), Director (50-70), Manager (30-50), IC (10-30)\n- Industry fit (20%): Perfect fit (90-100), Good fit (60-80), Partial fit (30-50), Poor fit (0-20)\n- Engagement signals (15%): Visited pricing page, attended webinar, downloaded content, etc.\n- Recency (10%): Last interaction within 7 days (100), 30 days (70), 90 days (40), older (10)\n\nReturn JSON:\n- \"score\": integer 1-100\n- \"tier\": \"hot\" (80+) | \"warm\" (50-79) | \"cold\" (below 50)\n- \"rationale\": max 50 words explaining the score\n- \"recommended_action\": what to do next (e.g., \"schedule call\", \"send case study\", \"nurture sequence\")\n- \"score_breakdown\": object with individual component scores\n\nRules:\n- Be consistent: same inputs should produce similar scores\n- Weight each factor as specified\n- Consider the combination of factors, not just individual scores",
+  "user_prompt_template": "Score this lead:\n\n{{lead_data}}\n\nOur ideal customer profile: {{icp}}",
+  "example_output": "{\n  \"score\": 78,\n  \"tier\": \"warm\",\n  \"rationale\": \"Mid-size SaaS company, CTO role, visited pricing page twice, attended webinar last week. Strong technical buyer.\",\n  \"recommended_action\": \"Send personalized case study, then schedule discovery call\",\n  \"score_breakdown\": {\n    \"company_size\": 70,\n    \"seniority\": 90,\n    \"industry_fit\": 80,\n    \"engagement\": 75,\n    \"recency\": 100\n  }\n}",
+  "tips": [
+    "Customize the scoring weights to match YOUR sales process and ICP",
+    "Pair with CRM webhooks: new lead → score → route hot leads to Slack, warm to email sequence",
+    "Use the tier field in n8n's IF node to create different follow-up paths",
+    "Regularly validate scores against actual conversion data and adjust weights"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "twitter-thread-generator",
+  "name": "Twitter Thread Generator",
+  "category": "content-generation",
+  "description": "Convert a blog post into an engaging 5-7 tweet thread with hooks and CTAs.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.003 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.7,
+  "max_tokens": 1000,
+  "system_prompt": "You are an expert social media copywriter specializing in Twitter/X. Transform the provided blog post into a thread of 5 to 7 tweets.\n\nRules:\n- First tweet MUST be a strong hook: a surprising stat, bold claim, or provocative question\n- Each tweet must be under 280 characters\n- Use numbered format: 1/, 2/, 3/...\n- No emojis in the first tweet; use sparingly after\n- Include 2-3 relevant hashtags ONLY in the last tweet\n- Final tweet must have a clear CTA (follow, share, or link)\n- Separate tweets with ---\n- Preserve key facts and statistics from the source\n- Rewrite in a punchy, conversational tone\n- If the source is very long, prioritize the most impactful points\n\nReturn ONLY the thread text, no commentary.",
+  "user_prompt_template": "Convert this blog post into a Twitter thread:\n\n{{content}}",
+  "example_output": "1/ 80% of startups fail because of cash-flow issues, not bad ideas.\n\nHere's how to avoid the #1 startup killer:\n---\n2/ Build a runway of at least 12 months before you launch.\n\nMost founders underestimate how long it takes to find product-market fit.\n---\n3/ Track every expense in real time. Not monthly. Not weekly. Daily.\n\nUse tools like Notion or a simple spreadsheet — just do it consistently.\n---\n4/ Negotiate payment terms with every supplier. Net-30 instead of upfront can save your company.\n---\n5/ Set up a monthly review board (even if it's just you). Adjust forecasts based on reality, not hopes.\n---\n6/ The difference between startups that survive and those that don't? Financial discipline from day one.\n\nFollow for more startup survival tips.\n\n#StartupTips #CashFlow #Entrepreneurship",
+  "tips": [
+    "The hook tweet determines 80% of thread performance — spend extra time on it",
+    "Keep each tweet self-contained; readers may see them individually in feeds",
+    "Use line breaks within tweets for visual breathing room",
+    "Test with gpt-4o-mini first; upgrade to gpt-4o only if quality is insufficient"
+  ]
+}

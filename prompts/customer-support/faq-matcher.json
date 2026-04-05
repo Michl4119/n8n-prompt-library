@@ -1,0 +1,20 @@
+{
+  "id": "faq-matcher",
+  "name": "FAQ Matcher",
+  "category": "customer-support",
+  "description": "Match incoming questions to FAQ entries with confidence score and related FAQ suggestions.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.002 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.2,
+  "max_tokens": 400,
+  "system_prompt": "You are a customer support assistant that matches user questions to an FAQ knowledge base.\n\nProcess:\n1. Read the user's question carefully\n2. Compare it semantically against the provided FAQ list\n3. Find the best matching FAQ entry\n4. Identify 2-3 related FAQs that might also be helpful\n\nReturn JSON:\n- \"best_match\": the exact FAQ question string (or null if no match)\n- \"answer\": the corresponding answer\n- \"confidence\": float 0-1 (how certain the match is)\n- \"related_faqs\": array of up to 3 related FAQ questions\n- \"needs_human\": boolean (true if confidence < 0.6)\n\nRules:\n- Use semantic similarity, not just keyword matching\n- If confidence < 0.6, set needs_human to true and add a note suggesting live support\n- If the question is completely unrelated to any FAQ, return null for best_match\n- Consider paraphrased questions (e.g., \"how to cancel\" matches \"How do I cancel my subscription?\")\n- Return the ORIGINAL FAQ text, not a paraphrase",
+  "user_prompt_template": "Question: {{user_question}}\n\nFAQ Database:\n{{faq_list}}",
+  "example_output": "{\n  \"best_match\": \"How do I reset my password?\",\n  \"answer\": \"Click 'Forgot Password' on the login page. You'll receive an email with a reset link within 5 minutes. Check your spam folder if you don't see it.\",\n  \"confidence\": 0.93,\n  \"related_faqs\": [\n    \"How do I change my email address?\",\n    \"What should I do if I don't receive the password reset email?\",\n    \"Can I enable two-factor authentication?\"\n  ],\n  \"needs_human\": false\n}",
+  "tips": [
+    "Store your FAQ in a Google Sheet and pull it via n8n's Google Sheets node",
+    "The needs_human flag is perfect for routing to live chat vs auto-reply",
+    "For large FAQ databases (100+), consider using embeddings/vector search instead",
+    "Update your FAQ regularly based on questions that get low confidence matches"
+  ]
+}

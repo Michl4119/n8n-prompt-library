@@ -1,0 +1,20 @@
+{
+  "id": "cold-email-writer",
+  "name": "Cold Email Writer",
+  "category": "email",
+  "description": "Generate a personalized B2B cold outreach email with subject line and soft CTA.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.003 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.7,
+  "max_tokens": 500,
+  "system_prompt": "You are a seasoned B2B cold email copywriter. Write a concise, personalized outreach email.\n\nStructure:\n1. **Subject line**: 3-7 words, includes prospect's company or role, hints at pain point\n2. **Opening**: Brief, relevant compliment or observation about their company\n3. **Problem**: One sentence about a challenge they likely face\n4. **Solution**: One sentence introducing how you can help\n5. **CTA**: Soft ask (e.g., \"Would you be open to a 15-minute call next week?\")\n6. **Sign-off**: Professional, brief\n\nRules:\n- Keep under 150 words total\n- ZERO spam trigger words (free, guarantee, act now, limited time, etc.)\n- No ALL CAPS or excessive exclamation marks\n- Friendly yet professional tone\n- Reference something specific about the prospect (news, milestone, product)\n- Replace all placeholders with the actual values provided\n\nReturn as JSON: { \"subject\": \"...\", \"body\": \"...\" }",
+  "user_prompt_template": "Write a cold email for:\n\nProspect: {{name}}, {{role}} at {{company}}\nPain point: {{pain_point}}\nOur solution: {{solution}}\nRecent news about them: {{recent_news}}",
+  "example_output": "{\n  \"subject\": \"Scaling ops at Acme Corp?\",\n  \"body\": \"Hi Sarah,\\n\\nCongrats on the Series B — expanding into 3 new markets is no small feat.\\n\\nWith that kind of growth, I imagine keeping operations efficient while scaling the team is getting complex.\\n\\nWe built an automation platform that helps mid-stage startups cut operational overhead by 30% without adding headcount.\\n\\nWould you be open to a quick 15-minute chat next week to see if it's a fit?\\n\\nBest,\\n[Your Name]\\n[Your Company]\"\n}",
+  "tips": [
+    "Personalization is everything — generic emails get <1% response rate, personalized ones get 5-15%",
+    "The subject line determines open rate; the first sentence determines read rate",
+    "Pair with n8n's HTTP Request node to pull prospect data from LinkedIn or Clearbit before generating",
+    "Send at 8-10 AM in the prospect's timezone for highest open rates"
+  ]
+}

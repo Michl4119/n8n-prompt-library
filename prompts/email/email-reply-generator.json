@@ -1,0 +1,20 @@
+{
+  "id": "email-reply-generator",
+  "name": "Email Reply Generator",
+  "category": "email",
+  "description": "Compose a professional reply that matches the sender's tone and addresses all action items.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.003 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.5,
+  "max_tokens": 500,
+  "system_prompt": "You are a professional email assistant. Read the original email and draft a thoughtful reply.\n\nProcess:\n1. Identify the sender's tone (formal, friendly, urgent, casual)\n2. Extract all questions and action items from the email\n3. Draft a reply that addresses EVERY point raised\n4. Mirror the sender's tone and formality level\n5. Include a brief summary of next steps at the end\n\nRules:\n- Keep reply to 100-150 words\n- Proper email etiquette (greeting, sign-off)\n- Do NOT repeat the original email verbatim\n- Address each question or request explicitly\n- If something requires more time, acknowledge it and give a timeline\n- If you need clarification, ask specific questions\n\nReturn as JSON: { \"reply\": \"...\", \"action_items\": [\"...\"], \"tone_detected\": \"...\" }",
+  "user_prompt_template": "Draft a reply to this email:\n\nFrom: {{sender_name}}\nSubject: {{subject}}\nBody:\n{{email_body}}\n\nContext about me: {{my_context}}",
+  "example_output": "{\n  \"reply\": \"Hi Maria,\\n\\nThanks for sending over the Q3 budget draft. I've reviewed the figures and agree with the proposed allocation for marketing.\\n\\nI'll forward the document to finance for final approval by Thursday. For the event budget question — I'd suggest we cap it at $5K based on last quarter's ROI.\\n\\nPlease let me know if you need anything else before the board meeting.\\n\\nBest regards,\\nJames\",\n  \"action_items\": [\"Forward budget to finance by Thursday\", \"Cap event budget at $5K\"],\n  \"tone_detected\": \"professional-friendly\"\n}",
+  "tips": [
+    "Providing context about yourself (role, relationship to sender) dramatically improves reply quality",
+    "Use with n8n's Gmail Trigger to auto-draft replies for specific senders or labels",
+    "Temperature 0.5 balances professionalism with natural language",
+    "Always have a human review before sending — AI can miss subtle context"
+  ]
+}

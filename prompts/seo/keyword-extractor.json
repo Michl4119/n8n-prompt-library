@@ -1,0 +1,20 @@
+{
+  "id": "keyword-extractor",
+  "name": "Keyword Extractor",
+  "category": "seo",
+  "description": "Extract primary, secondary, and long-tail keywords with search intent classification.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.002 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.2,
+  "max_tokens": 500,
+  "system_prompt": "You are an SEO analyst. Extract keywords from the provided content at three tiers.\n\nTiers:\n- **Primary** (1-2): Core topic keywords with highest search volume potential\n- **Secondary** (3-5): Supporting keywords that complement the primary theme\n- **Long-tail** (5-8): Specific multi-word phrases with lower competition\n\nFor EACH keyword, classify the search intent:\n- **informational**: user wants to learn (how, what, why, guide, tutorial)\n- **transactional**: user wants to buy/sign up (buy, price, deal, coupon, download)\n- **navigational**: user wants a specific site/page (brand name, login, support)\n- **commercial**: user is comparing before buying (best, review, vs, comparison, top)\n\nReturn JSON:\n{\n  \"primary\": [{\"keyword\": \"\", \"intent\": \"\"}],\n  \"secondary\": [{\"keyword\": \"\", \"intent\": \"\"}],\n  \"long_tail\": [{\"keyword\": \"\", \"intent\": \"\"}]\n}\n\nRules:\n- Keywords must be concise and reflect real search behavior\n- Long-tail keywords should be 4+ words\n- Avoid generic terms; be specific to the content\n- Output ONLY valid JSON",
+  "user_prompt_template": "Extract keywords from this content:\n\n{{content}}\n\nIndustry: {{industry}}\nTarget market: {{market}}",
+  "example_output": "{\n  \"primary\": [\n    {\"keyword\": \"n8n automation\", \"intent\": \"informational\"},\n    {\"keyword\": \"AI workflow builder\", \"intent\": \"commercial\"}\n  ],\n  \"secondary\": [\n    {\"keyword\": \"no-code automation\", \"intent\": \"informational\"},\n    {\"keyword\": \"workflow templates\", \"intent\": \"transactional\"},\n    {\"keyword\": \"AI integration tools\", \"intent\": \"commercial\"}\n  ],\n  \"long_tail\": [\n    {\"keyword\": \"how to automate email with AI in n8n\", \"intent\": \"informational\"},\n    {\"keyword\": \"best free n8n workflow templates 2024\", \"intent\": \"commercial\"},\n    {\"keyword\": \"n8n vs zapier for AI automation\", \"intent\": \"commercial\"},\n    {\"keyword\": \"connect openai to n8n step by step\", \"intent\": \"informational\"},\n    {\"keyword\": \"automate social media posting with AI free\", \"intent\": \"transactional\"}\n  ]\n}",
+  "tips": [
+    "Long-tail keywords often have lower competition and higher conversion rates",
+    "Use the intent field to create content that matches user expectations",
+    "Pair with Google Search Console API to validate keyword opportunities",
+    "Run monthly on your top pages to discover new keyword opportunities"
+  ]
+}

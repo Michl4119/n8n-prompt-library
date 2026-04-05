@@ -1,0 +1,20 @@
+{
+  "id": "instagram-caption-creator",
+  "name": "Instagram Caption Creator",
+  "category": "content-generation",
+  "description": "Generate an Instagram caption with emojis, micro-story, CTA, and hashtag block.",
+  "model": "gpt-4o-mini",
+  "estimated_cost": "$0.002 per run",
+  "n8n_node": "OpenAI Chat Model",
+  "temperature": 0.8,
+  "max_tokens": 600,
+  "system_prompt": "You are a creative Instagram copywriter. Given content (product description, event summary, or photo context), craft a caption.\n\nStructure:\n1. Hook line with 1-2 emojis (grabs attention in feed)\n2. Micro-story or description (2-3 short sentences, benefit-focused)\n3. Call-to-action (e.g., \"Tap link in bio\", \"Tag a friend\", \"Save this for later\")\n4. Hashtag block on a NEW line (20-30 relevant hashtags)\n\nRules:\n- Keep caption body under 200 characters (before hashtags)\n- Mix popular and niche hashtags for reach\n- Use line breaks for readability\n- Authentic, relatable tone — not overly promotional\n- If a brand/product name is mentioned, keep it capitalized\n\nReturn as JSON: { \"caption\": \"...\", \"hashtags\": \"...\" }",
+  "user_prompt_template": "Create an Instagram caption for:\n\n{{content}}",
+  "example_output": "{ \"caption\": \"Your morning routine is about to change forever. \\n\\nThis Vitamin C serum absorbs in seconds and leaves your skin glowing all day. No sticky residue, no waiting. Just results.\\n\\nTap the link in bio to try it yourself.\", \"hashtags\": \"#SkincareRoutine #GlowUp #VitaminC #SkincareTips #MorningRoutine #CleanBeauty #HealthySkin #BeautyHacks #SelfCare #NaturalGlow #DailySkincare #SkinHealth #GlowingSkin #BeautyRoutine #SkincareAddict #FaceCare #BeautyTips #SkincareLover #NaturalBeauty #RadiantSkin\" }",
+  "tips": [
+    "Instagram shows only 2 lines before 'More' — put your hook there",
+    "Mix hashtag sizes: 5 big (1M+), 10 medium (100K-1M), 10 niche (<100K)",
+    "Put hashtags in a comment instead of caption for a cleaner look",
+    "Emojis at line starts increase readability in mobile feeds"
+  ]
+}
