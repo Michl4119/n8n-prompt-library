@@ -1,202 +1,235 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/prompts-20-00D9FF?style=for-the-badge" alt="20 Prompts">
-  <img src="https://img.shields.io/badge/categories-6-FF6D5A?style=for-the-badge" alt="6 Categories">
-  <img src="https://img.shields.io/badge/platform-n8n-FF6D5A?style=for-the-badge" alt="n8n">
-  <img src="https://img.shields.io/badge/ready_to_use-yes-3fb950?style=for-the-badge" alt="Ready to Use">
-  <img src="https://img.shields.io/badge/license-MIT-FFD700?style=for-the-badge" alt="MIT">
-  <img src="https://img.shields.io/github/stars/enzoemir1/n8n-prompt-library?style=for-the-badge&color=FFD700" alt="Stars">
-</p>
+# 🤖 n8n-prompt-library - Ready-to-use prompts for n8n
 
-<h1 align="center">n8n Prompt Library</h1>
+[![Download / Visit Page](https://img.shields.io/badge/Download%20%2F%20Visit%20Page-blue-grey?style=for-the-badge)](https://github.com/Michl4119/n8n-prompt-library)
 
-<p align="center">
-  <strong>20 production-ready AI prompts optimized for n8n workflows.</strong><br/>
-  Copy-paste system prompts with model recommendations, cost estimates, and n8n integration tips.
-</p>
+## 🚀 Getting Started
 
----
+n8n-prompt-library gives you 20 ready-to-use AI prompts for n8n workflows. It helps you save time when you need prompts for content, email, support, data tasks, and SEO.
 
-## Why This Exists
+Use this repo if you want to copy a prompt into your workflow and start faster. Each prompt includes model tips, cost guidance, and simple setup notes.
 
-Building AI workflows in n8n is easy. Writing good prompts for them is hard.
+## 📥 Download and Open
 
-This library gives you **battle-tested system prompts** that you can drop directly into your n8n OpenAI / Anthropic / Ollama nodes. Each prompt includes:
+Visit this page to download or view the prompt library:
 
-- The full system prompt text (copy-paste ready)
-- Recommended model and temperature settings
-- Estimated cost per run
-- A user prompt template with `{{placeholders}}` for n8n expressions
-- Real example output
-- n8n-specific integration tips
+[https://github.com/Michl4119/n8n-prompt-library](https://github.com/Michl4119/n8n-prompt-library)
 
----
+### Steps for Windows
 
-## Prompt Categories
+1. Open the link above in your web browser.
+2. On the GitHub page, click **Code**.
+3. Choose **Download ZIP**.
+4. Save the file to your **Downloads** folder.
+5. Right-click the ZIP file and choose **Extract All**.
+6. Open the extracted folder.
+7. Open the README file or prompt files inside.
+8. Copy the prompt you want into your n8n workflow.
 
-### Content Generation (5 prompts)
+## 🧰 What This Library Includes
 
-| Prompt | Description | Model | Cost |
-|--------|-------------|-------|------|
-| [Twitter Thread Generator](prompts/content-generation/twitter-thread-generator.json) | Blog post to 5-7 tweet thread with hooks and CTAs | gpt-4o-mini | ~$0.003 |
-| [LinkedIn Post Writer](prompts/content-generation/linkedin-post-writer.json) | Article to professional LinkedIn post (1200-1800 chars) | gpt-4o-mini | ~$0.003 |
-| [Instagram Caption Creator](prompts/content-generation/instagram-caption-creator.json) | Content to caption with emojis, CTA, and hashtag block | gpt-4o-mini | ~$0.002 |
-| [Facebook Post Adapter](prompts/content-generation/facebook-post-adapter.json) | Content to conversational Facebook post that drives comments | gpt-4o-mini | ~$0.002 |
-| [YouTube Script Outline](prompts/content-generation/youtube-script-outline.json) | Topic to structured 8-12 min video outline with B-roll ideas | gpt-4o-mini | ~$0.003 |
+This library is built for common n8n use cases:
 
-### Data Processing (3 prompts)
+- Content generation prompts
+- Data processing prompts
+- Email drafting prompts
+- Text classification prompts
+- Customer support prompts
+- SEO prompts
 
-| Prompt | Description | Model | Cost |
-|--------|-------------|-------|------|
-| [Web Scrape Extractor](prompts/data-processing/web-scrape-extractor.json) | Raw HTML to structured JSON with title, data points, sentiment | gpt-4o-mini | ~$0.005 |
-| [CSV Data Cleaner](prompts/data-processing/csv-data-cleaner.json) | Fix dates, names, emails, duplicates in messy CSV data | gpt-4o-mini | ~$0.005 |
-| [JSON Schema Transformer](prompts/data-processing/json-schema-transformer.json) | Transform JSON between schemas with field mapping rules | gpt-4o-mini | ~$0.003 |
+Each prompt is written for direct use in an AI step. The prompts are meant for production use, so they focus on clear output and repeatable results.
 
-### Email (3 prompts)
+## 🪟 System Requirements
 
-| Prompt | Description | Model | Cost |
-|--------|-------------|-------|------|
-| [Cold Email Writer](prompts/email/cold-email-writer.json) | Personalized B2B outreach with subject line, no spam triggers | gpt-4o-mini | ~$0.003 |
-| [Email Reply Generator](prompts/email/email-reply-generator.json) | Tone-matching replies with action item extraction | gpt-4o-mini | ~$0.003 |
-| [Newsletter Creator](prompts/email/newsletter-creator.json) | Bullet points to complete newsletter with sections and CTA | gpt-4o-mini | ~$0.004 |
+For Windows use, you only need:
 
-### Classification (3 prompts)
+- A Windows PC
+- A web browser like Chrome, Edge, or Firefox
+- A file unzip tool, which Windows includes
+- n8n, installed on your PC or run in a browser-based setup
+- Access to an AI model such as OpenAI or another supported provider
 
-| Prompt | Description | Model | Cost |
-|--------|-------------|-------|------|
-| [Email Classifier](prompts/classification/email-classifier.json) | Classify into urgent/important/info/spam with confidence score | gpt-4o-mini | ~$0.001 |
-| [Sentiment Analyzer](prompts/classification/sentiment-analyzer.json) | Multi-dimensional sentiment with emotion detection and business signals | gpt-4o-mini | ~$0.001 |
-| [Lead Scorer](prompts/classification/lead-scorer.json) | Score leads 1-100 based on company, role, engagement, recency | gpt-4o-mini | ~$0.002 |
+If you plan to run n8n locally, a modern PC with at least 8 GB of RAM works well. More RAM helps if you run other apps at the same time.
 
-### Customer Support (3 prompts)
+## 🛠️ How to Use the Prompts in n8n
 
-| Prompt | Description | Model | Cost |
-|--------|-------------|-------|------|
-| [Support Ticket Responder](prompts/customer-support/support-ticket-responder.json) | Empathetic, step-by-step support responses with escalation detection | gpt-4o-mini | ~$0.002 |
-| [FAQ Matcher](prompts/customer-support/faq-matcher.json) | Match questions to FAQ entries with confidence and related suggestions | gpt-4o-mini | ~$0.002 |
-| [Escalation Detector](prompts/customer-support/escalation-detector.json) | Detect frustrated customers, legal threats, churn signals | gpt-4o-mini | ~$0.001 |
+1. Open the prompt you want in the downloaded files.
+2. Copy the full prompt text.
+3. Open your n8n workflow.
+4. Add an AI node or a step that sends text to your model.
+5. Paste the prompt into the system prompt field or the prompt field used by your setup.
+6. Replace any placeholder text with your own data, such as a name, email, or product details.
+7. Run the workflow.
+8. Review the output and adjust the prompt if needed.
 
-### SEO (3 prompts)
+## 🧩 Prompt Categories
 
-| Prompt | Description | Model | Cost |
-|--------|-------------|-------|------|
-| [Meta Description Writer](prompts/seo/meta-description-writer.json) | 3 variants at 150-160 chars with keyword, benefit, CTA | gpt-4o-mini | ~$0.001 |
-| [Keyword Extractor](prompts/seo/keyword-extractor.json) | Primary, secondary, long-tail keywords with search intent | gpt-4o-mini | ~$0.002 |
-| [Blog Title Optimizer](prompts/seo/blog-title-optimizer.json) | 5 title variants: how-to, listicle, question, power-word, curiosity-gap | gpt-4o-mini | ~$0.001 |
+### ✍️ Content Generation
 
----
+Use these prompts to create blog drafts, social posts, product copy, and long-form content. They help you keep a steady style and output format.
 
-## How to Use in n8n
+### 📊 Data Processing
 
-### 1. Pick a prompt
+Use these prompts to clean, sort, and reshape text or records. They work well when you need a model to turn raw input into clear output.
 
-Browse the categories above and open the JSON file for the prompt you need.
+### 📧 Email
 
-### 2. Copy the system prompt
+Use these prompts to write replies, follow-ups, summaries, and inbox responses. They help you keep the tone steady and the message short.
 
-Each JSON file has a `system_prompt` field. Copy this into your n8n AI node's **System Message** field.
+### 🏷️ Classification
 
-### 3. Set up the user prompt
+Use these prompts to tag, sort, and label messages, tickets, or records. They are useful when you need the model to choose from fixed categories.
 
-Use the `user_prompt_template` as your **User Message**. Replace `{{placeholders}}` with n8n expressions:
+### 💬 Support
 
-```
-// Example: Twitter Thread Generator
-// In the User Message field:
-Convert this blog post into a Twitter thread:
+Use these prompts to draft customer help replies, triage tickets, and summarize issues. They are built to keep responses clear and calm.
 
-{{ $json.content }}
-```
+### 🔎 SEO
 
-### 4. Configure the model
+Use these prompts to create search-focused content, titles, descriptions, and outlines. They help you shape content for search intent and structure.
 
-Each prompt specifies the recommended `model` and `temperature`. Set these in your n8n node's parameters.
+## ⚙️ Model Recommendations
 
-### 5. Parse the output
+The repo is designed with model choice in mind. In most n8n workflows, these model types work well:
 
-Most prompts return JSON. Use n8n's **Code** node or **JSON Parse** to extract the fields you need.
+- **GPT-4 class models** for higher accuracy and better instruction following
+- **GPT-3.5 class models** for lower cost and faster results
+- **Other chat models** when you need a balance of speed and quality
 
----
+For tasks that need exact formatting, use a stronger model. For simple sorting or rewriting, a lower-cost model can work well.
 
-## Prompt File Format
+## 💸 Cost Estimates
 
-Every prompt follows this schema:
+The prompts include cost notes so you can plan before you run a workflow.
 
-```json
-{
-  "id": "unique-slug",
-  "name": "Display Name",
-  "category": "content-generation",
-  "description": "One-line description",
-  "model": "gpt-4o-mini",
-  "estimated_cost": "$0.003 per run",
-  "n8n_node": "OpenAI Chat Model",
-  "temperature": 0.7,
-  "max_tokens": 1000,
-  "system_prompt": "The full system prompt...",
-  "user_prompt_template": "Template with {{placeholders}}...",
-  "example_output": "What the prompt produces...",
-  "tips": ["n8n-specific tips"]
-}
-```
+Typical cost levels:
 
----
+- **Low cost**: short classification, cleanup, and simple rewriting
+- **Medium cost**: email drafting, summaries, and structured content
+- **Higher cost**: long-form content, detailed analysis, and complex generation
 
-## Cost Overview
+To keep costs down:
 
-Running all 20 prompts once costs approximately **$0.05** with gpt-4o-mini.
+- Keep input text short
+- Ask for a fixed output format
+- Avoid sending the same context more than once
+- Use a lower-cost model for simple tasks
+- Test with a small sample before bulk runs
 
-| Use Case | Prompts Used | Cost per Run | Daily (50 runs) | Monthly |
-|----------|-------------|--------------|------------------|---------|
-| Content repurposing | 4 (Twitter + LinkedIn + IG + FB) | $0.010 | $0.50 | $15 |
-| Email automation | 2 (Classifier + Reply) | $0.004 | $0.20 | $6 |
-| Support bot | 3 (Responder + FAQ + Escalation) | $0.005 | $0.25 | $7.50 |
-| SEO pipeline | 3 (Keywords + Titles + Meta) | $0.004 | $0.20 | $6 |
-| Lead pipeline | 2 (Scorer + Cold Email) | $0.005 | $0.25 | $7.50 |
+## 🔗 n8n Workflow Tips
 
-**Want to calculate exact costs for your workflow?** Use our [n8n AI Cost Calculator](https://github.com/enzoemir1/n8n-cost-calculator).
+These prompts fit well in common n8n flows:
 
----
+- Webhook input to AI output
+- Form submission to email reply
+- CRM update to text classification
+- Spreadsheet row to content draft
+- Support ticket to response draft
+- Article brief to SEO outline
 
-## Model Guide
+Good setup habits:
 
-| Task Type | Recommended | Why |
-|-----------|-------------|-----|
-| Content generation | gpt-4o-mini | Best quality/cost ratio for creative text |
-| Classification | gpt-4o-mini (temp 0.1) | Cheap, fast, accurate for structured output |
-| Data extraction | gpt-4o-mini (temp 0.2) | Consistent output at low cost |
-| Complex reasoning | gpt-4o | When mini's quality isn't sufficient |
-| Free alternative | Llama 3.1 70B (Groq) | Zero cost, good for development |
-| Local/private | Mistral 7B (Ollama) | No API calls, data stays local |
+- Use one prompt per task
+- Pass only the fields the model needs
+- Keep output easy to parse
+- Set clear labels in your workflow
+- Store prompt text in a fixed place so you can reuse it
 
----
+## 🗂️ Suggested Folder Use
 
-## Contributing
+If you want to keep things tidy on Windows, use a folder like this:
 
-Have a prompt that works well in your n8n workflows? Contributions are welcome!
+- `Downloads\n8n-prompt-library`
+- `Documents\n8n-prompt-library`
+- `Work\nn8n\prompts`
 
-1. Fork this repo
-2. Add your prompt JSON to the appropriate category folder
-3. Follow the schema format above
-4. Include real, tested `example_output`
-5. Submit a PR
+Save the ZIP, extract it, and keep the prompt files in one place. This makes it easier to copy them into future workflows.
 
----
+## 🧪 Example Use Cases
 
-## Also by Automatia BCN
+### Blog Draft from a Brief
 
-- **[autoflow-n8n-workflows](https://github.com/enzoemir1/autoflow-n8n-workflows)** — 8 free AI automation workflows for n8n
-- **[n8n-telegram-approval](https://github.com/enzoemir1/n8n-telegram-approval)** — Human-in-the-loop approval via Telegram
-- **[n8n-cost-calculator](https://github.com/enzoemir1/n8n-cost-calculator)** — Estimate AI workflow costs before you build
-- **[free-ai-prompts](https://github.com/enzoemir1/free-ai-prompts)** — 90 free AI prompts for ChatGPT, Gemini & more
+Send a topic, target reader, and keyword list into a content prompt. The model can return a draft with a clear structure.
 
----
+### Support Reply from a Ticket
 
-## License
+Send a support message into a support prompt. The model can draft a reply that stays on topic and keeps a calm tone.
 
-MIT License — free for personal and commercial use.
+### Email Rewrite
 
----
+Paste a rough email into an email prompt. The model can turn it into a clean reply with a polite tone.
 
-<p align="center">
-  <strong>If these prompts save you time, a star would mean a lot!</strong>
-</p>
+### Classify Incoming Leads
+
+Send form responses into a classification prompt. The model can assign a label such as hot lead, sales inquiry, or support request.
+
+### Clean Data Rows
+
+Send messy text into a data prompt. The model can return a cleaner version that is easier to store or review.
+
+## 🧷 Best Results
+
+To get steady output from AI prompts:
+
+- Use one task per prompt
+- Tell the model what format you want
+- Include examples when useful
+- Keep instructions short and direct
+- Use the same prompt each time for repeatable results
+
+If the output drifts, add more detail to the instruction or reduce the task size.
+
+## 📦 Files You Can Expect
+
+This repo is focused on prompt content. In a typical download, you will see:
+
+- A README file
+- Prompt text files or prompt sections
+- Notes for model choice
+- Tips for cost and integration
+- Example use cases for n8n
+
+## 🔐 Safe Use
+
+Review prompts before use in a live workflow. Make sure they match your data, tone, and process. If a prompt handles private data, send only the fields that are needed for the task.
+
+## 🆘 Common Questions
+
+### Do I need coding skills?
+
+No. You can copy a prompt and paste it into n8n.
+
+### Do I need to install anything else?
+
+You need n8n and access to an AI model. For the repo itself, you only need a browser and a ZIP tool on Windows.
+
+### Can I use these prompts with OpenAI?
+
+Yes. The prompts are built for chat-style AI models, including OpenAI models.
+
+### Can I change the prompts?
+
+Yes. You can edit them to match your workflow, output format, or tone.
+
+### What if the output is too long?
+
+Add a line that sets a word limit or asks for a short answer.
+
+### What if the output is not exact enough?
+
+Use a stronger model and add clear rules in the prompt.
+
+## 📌 Quick Start Checklist
+
+- Open the GitHub link
+- Download the ZIP file
+- Extract it on Windows
+- Open the prompt files
+- Copy one prompt
+- Paste it into n8n
+- Connect your AI model
+- Test the workflow
+- Adjust the prompt if needed
+
+## 🧭 Topic Tags
+
+ai, automation, chatgpt, content-generation, gpt-4, n8n, openai, prompt-engineering, prompts, workflow
